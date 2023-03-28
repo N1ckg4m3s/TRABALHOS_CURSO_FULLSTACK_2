@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Missão 1 / CADASTRO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <style>@import url("formatos.css");</style>
+    <style>@import url("Cadastro.css");</style>
+</head>
+<body>
+    <header class="navbar" style="justify-content: flex-start;">
+        <button onclick="window.location.href='Home.html'">MENU</button>
+        <button onclick="window.location.href='Receitas.html'">RECEITAS</button>
+        <button onclick="window.location.href='Cadastro.html'">CADASTRO</button>
+    </header>
+    <main class="container-fluid">
+        <h1>Efetue seu Cadastro</h1>
+        <script src="EnviarEmail.js"></script>
+        <form method="get" action="mailto:teste@email.com" target="_blank">
+            <label for="Nome" class="Lab1">Nome:</label>
+            <input id="InputNome" type="text" class="Inp1" required>
+
+            <label for="e-mail" class="Lab2">e-mail:</label>
+            <input id="InputEmail" type="text" class="Inp2" required>
+            
+            <label for="Cep" class="Lab3">Cep:</label>
+            <input id="InputCep" type="text" minlength="8" class="Inp3" required>
+
+            <label for="rua" class="Lab4">rua:</label>
+            <input id="InputRua" type="text" class="Inp4" required>
+
+            <label for="N" class="Lab5">N°:</label>
+            <input id="InputNumero" type="number" class="Inp5" required>
+
+            <label for="Complemento" class="Lab6">Complemento:</label>
+            <input id="InputComplemento" type="text" class="Inp6">
+
+            <label for="cidade" class="Lab7">Cidade:</label>
+            <input id="InputCidade" type="text" class="Inp7" required>
+
+            <label for="UF" class="Lab8">UF:</label>
+            <input id="InputUf" type="text" class="Inp8" required>
+            <input type="hidden" id="TEXTO" name="Body" value="">
+            <button onclick="EnviarEmail()" type="submit" placeholder="CADASTRAR" >ENVIAR</button>
+        </form>
+    </main>
+    <footer class="AreaCopy Centralizar">©JUREMA 2023</footer>
+</body>
+</html>
