@@ -1,0 +1,26 @@
+<style>@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css");</style>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <td>Titulo</td>
+        <td>Resumo</td>
+        <td>Editora</td>
+        <td>Autores</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let L of livros">
+            <td>{{L.titulo}}
+                <p>
+                    <button
+                    (click)="ApagarLvr(L.codigo)"
+                    class="btn btn-danger">Apagar</button></p>
+            </td>
+            <td>{{L.resumo}}</td>
+            <td>{{L.Editora}}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let I of L.autores">{{I}}</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
