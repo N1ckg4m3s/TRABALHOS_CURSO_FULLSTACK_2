@@ -1,0 +1,29 @@
+<style>@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css");</style>
+<h3>FORMULARIO</h3>
+<form id="Form1" (ngSubmit)="IncluirDados(f)" #f="ngForm">
+    <div class="form-group">
+        <label required for="FormTitulo">Titulo</label>
+        <input required type="text" name="titulo" id="InpTitulo" ngModel
+        class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="FormResumo">Resumo</label>
+        <textarea required id="InpResumo" name="resumo" ngModel
+        class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="FormTitulo">Editora</label>
+        <select id="InpEditora" required  name="editoraForm" ngModel
+        class="form-control">
+            <option *ngFor="let Edt of editora" class="form-control" value="{{Edt.codEditora}}">
+                {{Edt.nome}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="FormTitulo">Autores(1) por linha</label>
+        <textarea  id="InpAutores" name="autores" required ngModel
+        class="form-control"></textarea>
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Salvar dados</button>
+</form>
