@@ -3,7 +3,6 @@ import { ControleEditoraService } from '../controle-editora.service';
 import { ControleLivrosService } from '../controle-livros.service';
 import { Editora } from '../editora';
 import { Livro } from '../livro';
-//import GerarDadosTeste from "../GerarDadosTeste"
 @Component({
   selector: 'app-livro-lista',
   templateUrl: './livro-lista.component.html',
@@ -15,11 +14,22 @@ export class LivroListaComponent {
   private servEditora=ControleEditoraService
   private servLivro=ControleLivrosService
   constructor(){}
-  ngOnInit(){
+  async ngOnInit(){
     this.editora=new this.servEditora().getEditoras()
-    this.livros=new this.servLivro().obterLivros()
+    new this.servLivro().obterLivros()
+    .then((A)=>A.json())
+    .then((A)=>{
+      this.livros=A
+    })
   }
-  ApagarLvr(Code:number){
-    new this.servLivro().excluir(Code)
+  ApagarLvr(Liv:any){
+    new this.servLivro().excluir(Liv._id)
+    .then(()=>{
+      new this.servLivro().obterLivros()
+      .then((A)=>A.json())
+      .then((A)=>{
+        this.livros=A
+      })
+    })
   }
 }

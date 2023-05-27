@@ -1,29 +1,28 @@
 import {Livro} from "./livro"
 import { Injectable } from '@angular/core';
-var livros:Array<Livro>=[]
-var CodigoMaior:number;
-let i:number
+var baseURL="http://localhost:3030/livros"
 @Injectable({
   providedIn: 'root'
 })
 export class ControleLivrosService {
-  obterLivros(){
-    return(livros)
+  async obterLivros(){
+    return await fetch(baseURL,{method:"GET"})
   };
-  incluir(Livro:Livro){
-      CodigoMaior=0;
-      for(i=0;i<livros.length;i++){
-          if (livros[i].codigo>=CodigoMaior){
-              CodigoMaior=livros[i].codigo
-          }
-      }
-      Livro.codigo=CodigoMaior+1
-      livros.push(Livro)
-  };
-  excluir(codigo:number){
-    livros.splice(livros.findIndex((A)=>{
-      return A.codigo==codigo
-    }),1)
-  };
+  async incluir(Livro:Livro){
+    console.log("Livro pra incluir", Livro)
+    const Resp=await fetch(baseURL,{
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify(Livro),
+    })
+    return Resp
+};
+async excluir(codigo:string){
+    console.log(codigo)
+    const Resp=await fetch(baseURL+"/"+codigo,{method:'DELETE',})
+    return Resp
+};
   constructor() { }
 }
